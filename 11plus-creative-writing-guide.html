@@ -20,6 +20,7 @@
   --emotive: #E91E63;
   --statistic: #FF6F00;
   --ruleofthree: #7B1FA2;
+  --colon-semi: #AD1457;
   --ing: #26A69A;
   --prep: #5C6BC0;
   --adverb: #EF6C00;
@@ -27,18 +28,16 @@
   --ed: #8E24AA;
   --dialog: #1565C0;
   --action: #2E7D32;
-  --colon-semi: #AD1457;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Caveat', cursive;
-  background: #FFF8E1;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='32' x2='100' y2='32' stroke='%23b3d4fc' stroke-width='0.5'/%3E%3Cline x1='0' y1='64' x2='100' y2='64' stroke='%23b3d4fc' stroke-width='0.5'/%3E%3Cline x1='0' y1='96' x2='100' y2='96' stroke='%23b3d4fc' stroke-width='0.5'/%3E%3C/svg%3E");
+  font-family: 'Poppins', sans-serif;
+  background: #F5F5F5;
   color: #1a1a2e;
-  font-size: 1.25rem;
-  line-height: 2;
+  font-size: 1rem;
+  line-height: 1.7;
   padding: 20px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 h1 {
@@ -46,21 +45,15 @@ h1 {
   font-size: 2.5rem;
   color: #1565C0;
   text-align: center;
-  margin: 30px 0 10px;
+  margin: 20px 0 10px;
   text-shadow: 2px 2px 0 #BBDEFB;
 }
 h2 {
   font-family: 'Patrick Hand', cursive;
   font-size: 2rem;
   margin: 30px 0 15px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 12px;
-}
-h3 {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.5rem;
-  margin: 20px 0 10px;
-  color: #37474F;
 }
 .fiction-title {
   background: linear-gradient(135deg, #E8EAF6, #C5CAE9);
@@ -72,183 +65,233 @@ h3 {
   color: #1B5E20;
   border-left: 6px solid #4CAF50;
 }
+
+/* ======== TWO-COLUMN LAYOUT ======== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 20px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* LEFT: Clean essay */
+.essay-col {
+  background: #FFFEF7;
+  background-image:
+    repeating-linear-gradient(transparent, transparent 31px, #b3d4fc33 31px, #b3d4fc33 32px);
+  padding: 35px 40px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  line-height: 2;
+  border-right: 3px solid #E0E0E0;
+  position: relative;
+}
+.essay-col::before {
+  content: '';
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #FFCDD2;
+  opacity: 0.5;
+}
+.essay-col p {
+  margin-bottom: 14px;
+  padding-left: 20px;
+}
+.essay-col .essay-title {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #37474F;
+}
+
+/* Inline markers in the essay */
+.marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: white;
+  vertical-align: super;
+  margin: 0 1px;
+  cursor: help;
+  position: relative;
+  top: -2px;
+}
+/* Subtle underline on the technique phrase */
+.tech-phrase {
+  border-bottom: 2px solid;
+  padding-bottom: 1px;
+}
+
+/* RIGHT: Annotation blobs */
+.notes-col {
+  background: #FAFAFA;
+  padding: 25px 20px;
+  overflow-y: auto;
+  max-height: none;
+}
+
+/* Blob cards */
+.blob {
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  position: relative;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-left: 5px solid;
+  transition: transform 0.15s;
+}
+.blob:hover { transform: translateX(4px); }
+.blob-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  margin-right: 8px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.blob-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline;
+}
+.blob-system {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 8px;
+  color: white;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.blob p { margin-top: 6px; color: #555; }
+.blob .quoted { font-style: italic; color: #333; font-family: 'Caveat', cursive; font-size: 1rem; }
+
+/* Blob colour themes */
+.blob-simile      { background: #E3F2FD; border-color: var(--simile); }
+.blob-hyperbole   { background: #FCE4EC; border-color: var(--hyperbole); }
+.blob-alliteration{ background: #E8F5E9; border-color: var(--alliteration); }
+.blob-metaphor    { background: #F3E5F5; border-color: var(--metaphor); }
+.blob-personification { background: #FFF3E0; border-color: var(--personification); }
+.blob-onomatopoeia{ background: #E0F7FA; border-color: var(--onomatopoeia); }
+.blob-oxymoron    { background: #FFEBEE; border-color: var(--oxymoron); }
+.blob-fact        { background: #EFEBE9; border-color: var(--fact); }
+.blob-opinion     { background: #E8EAF6; border-color: var(--opinion); }
+.blob-rhetorical  { background: #FFEBEE; border-color: var(--rhetorical); }
+.blob-emotive     { background: #FCE4EC; border-color: var(--emotive); }
+.blob-statistic   { background: #FFF3E0; border-color: var(--statistic); }
+.blob-ruleofthree { background: #F3E5F5; border-color: var(--ruleofthree); }
+.blob-colon-semi  { background: #FCE4EC; border-color: var(--colon-semi); }
+.blob-ispace      { background: #E0F2F1; border-color: var(--ing); }
+.blob-drop        { background: #E8EAF6; border-color: var(--dialog); }
+.blob-multi       { background: #FFFDE7; border-color: #FBC02D; }
+
+/* Section labels above blob groups */
+.blob-section {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  color: #78909C;
+  margin: 18px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed #CFD8DC;
+}
+.blob-section:first-child { margin-top: 0; }
+
+/* Utilities */
 .intro-box {
   background: white;
   border: 3px dashed #90CAF9;
   border-radius: 16px;
   padding: 20px 25px;
   margin: 20px 0;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
   line-height: 1.8;
 }
-.legend-box {
-  background: white;
-  border: 2px solid #E0E0E0;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 25px 0;
+.legend-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
 }
-.legend-box h3 { grid-column: 1 / -1; margin: 0 0 10px; font-family: 'Poppins', sans-serif; }
+.legend-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 2px solid #E0E0E0;
+}
+.legend-card h3 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
 .legend-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  margin: 4px 0;
 }
 .legend-swatch {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 4px;
   flex-shrink: 0;
-}
-.story-text {
-  background: white;
-  border-radius: 16px;
-  padding: 30px 35px;
-  margin: 15px 0;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  position: relative;
-}
-.story-text p { margin-bottom: 16px; text-indent: 2em; }
-.story-text p:first-child { text-indent: 0; }
-
-/* Highlight spans */
-span[data-technique] {
-  position: relative;
-  padding: 2px 4px;
-  border-radius: 4px;
-  cursor: help;
-}
-span[data-technique]::after {
-  content: attr(data-label);
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 8px;
-  white-space: nowrap;
-  color: white;
-  opacity: 0;
-  transition: opacity 0.2s;
-  pointer-events: none;
-  z-index: 10;
-}
-span[data-technique]:hover::after { opacity: 1; }
-
-/* SHAMPOO colors */
-.hl-simile { background: rgba(33,150,243,0.15); border-bottom: 2px solid var(--simile); }
-.hl-simile::after { background: var(--simile); }
-.hl-hyperbole { background: rgba(233,30,99,0.12); border-bottom: 2px solid var(--hyperbole); }
-.hl-hyperbole::after { background: var(--hyperbole); }
-.hl-alliteration { background: rgba(76,175,80,0.15); border-bottom: 2px solid var(--alliteration); }
-.hl-alliteration::after { background: var(--alliteration); }
-.hl-metaphor { background: rgba(156,39,176,0.12); border-bottom: 2px solid var(--metaphor); }
-.hl-metaphor::after { background: var(--metaphor); }
-.hl-personification { background: rgba(255,152,0,0.15); border-bottom: 2px solid var(--personification); }
-.hl-personification::after { background: var(--personification); }
-.hl-onomatopoeia { background: rgba(0,188,212,0.15); border-bottom: 2px solid var(--onomatopoeia); }
-.hl-onomatopoeia::after { background: var(--onomatopoeia); }
-.hl-oxymoron { background: rgba(244,67,54,0.15); border-bottom: 2px solid var(--oxymoron); }
-.hl-oxymoron::after { background: var(--oxymoron); }
-
-/* A FOREST colors */
-.hl-fact { background: rgba(121,85,72,0.12); border-bottom: 2px solid var(--fact); }
-.hl-fact::after { background: var(--fact); }
-.hl-opinion { background: rgba(63,81,181,0.12); border-bottom: 2px solid var(--opinion); }
-.hl-opinion::after { background: var(--opinion); }
-.hl-rhetorical { background: rgba(211,47,47,0.1); border-bottom: 2px solid var(--rhetorical); }
-.hl-rhetorical::after { background: var(--rhetorical); }
-.hl-emotive { background: rgba(233,30,99,0.1); border-bottom: 2px solid var(--emotive); }
-.hl-emotive::after { background: var(--emotive); }
-.hl-statistic { background: rgba(255,111,0,0.12); border-bottom: 2px solid var(--statistic); }
-.hl-statistic::after { background: var(--statistic); }
-.hl-ruleofthree { background: rgba(123,31,162,0.12); border-bottom: 2px solid var(--ruleofthree); }
-.hl-ruleofthree::after { background: var(--ruleofthree); }
-.hl-colon-semi { background: rgba(173,20,87,0.1); border-bottom: 2px dashed var(--colon-semi); }
-.hl-colon-semi::after { background: var(--colon-semi); }
-
-/* ISPACE badges */
-.ispace-badge, .drop-badge {
-  display: inline-block;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 1px 8px;
-  border-radius: 10px;
-  color: white;
-  margin-right: 4px;
-  vertical-align: middle;
-}
-.ispace-I { background: var(--ing); }
-.ispace-S { background: var(--simile); }
-.ispace-P { background: var(--prep); }
-.ispace-A { background: var(--adverb); }
-.ispace-C { background: var(--conjunction); }
-.ispace-E { background: var(--ed); }
-.drop-D { background: var(--dialog); }
-.drop-R { background: var(--rhetorical); }
-.drop-O { background: var(--onomatopoeia); }
-.drop-P { background: var(--action); }
-
-/* Annotation margin notes */
-.margin-note {
-  display: block;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
-  color: #666;
-  background: #FFFDE7;
-  border-left: 3px solid #FFC107;
-  padding: 4px 10px;
-  margin: 8px 0;
-  border-radius: 0 8px 8px 0;
-  font-style: italic;
-}
-.emoji-illustration {
-  font-size: 2.5rem;
-  text-align: center;
-  margin: 15px 0;
 }
 .prompt-box {
   background: #E3F2FD;
   border: 2px solid #90CAF9;
   border-radius: 12px;
-  padding: 15px 20px;
+  padding: 14px 20px;
   margin: 15px 0;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
 }
 .prompt-box strong { color: #1565C0; }
 .tip-box {
   background: #FFF3E0;
   border: 2px solid #FFB74D;
   border-radius: 12px;
-  padding: 15px 20px;
+  padding: 14px 20px;
   margin: 15px 0;
-  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
 }
-.tip-box::before { content: "💡 "; font-size: 1.2rem; }
+.tip-box::before { content: "\1F4A1 "; font-size: 1.2rem; }
+.section-divider {
+  text-align: center;
+  margin: 40px 0 10px;
+  font-size: 2rem;
+  color: #90CAF9;
+}
 .cheat-sheet {
   background: white;
   border: 3px solid #7E57C2;
   border-radius: 16px;
   padding: 20px;
-  margin: 25px 0;
+  margin: 20px 0;
 }
-.cheat-sheet h3 { color: #7E57C2; font-family: 'Patrick Hand', cursive; }
+.cheat-sheet h3 { color: #7E57C2; font-family: 'Patrick Hand', cursive; font-size: 1.3rem; margin-bottom: 10px; }
 .cheat-sheet table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
 }
 .cheat-sheet td, .cheat-sheet th {
@@ -257,11 +300,10 @@ span[data-technique]:hover::after { opacity: 1; }
   text-align: left;
 }
 .cheat-sheet th { background: #EDE7F6; color: #4527A0; }
-.section-divider {
-  text-align: center;
-  margin: 40px 0;
-  font-size: 2rem;
-  color: #90CAF9;
+
+@media (max-width: 800px) {
+  .two-col { grid-template-columns: 1fr; }
+  .essay-col { border-right: none; border-bottom: 3px solid #E0E0E0; }
 }
 </style>
 </head>
@@ -270,181 +312,242 @@ span[data-technique]:hover::after { opacity: 1; }
 <!-- ========== TITLE & INTRODUCTION ========== -->
 <h1>&#x270D;&#xFE0F; 11+ CSSE Creative Writing Guide &#x1F31F;</h1>
 <div class="intro-box">
-  <p><strong>Hello!</strong> This guide shows you <em>exactly</em> how to write a top-scoring 11+ creative writing piece. You will see two complete example essays:</p>
-  <p>&#x1F4D6; <strong>Piece 1 &mdash; Fiction</strong> (a story) &mdash; using <strong>SHAMPOO</strong>, <strong>ISPACE</strong> and <strong>DROP</strong></p>
-  <p>&#x1F4E3; <strong>Piece 2 &mdash; Non-Fiction</strong> (a persuasive letter) &mdash; using <strong>A FOREST</strong></p>
-  <p><strong>Hover over</strong> any highlighted word to see its technique name! Each paragraph also has badges and notes explaining what&rsquo;s happening.</p>
+  <p><strong>Hello!</strong> This guide shows you <em>exactly</em> how to write a top-scoring 11+ creative writing piece.</p>
+  <p>&#x1F448; <strong>LEFT side</strong> = the clean essay (what you would write in the exam)<br>
+  &#x1F449; <strong>RIGHT side</strong> = colourful blobs explaining every technique used</p>
+  <p>The numbered circles <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:#9C27B0;color:white;font-size:0.6rem;font-weight:700;align-items:center;justify-content:center;">3</span> in the essay match the same number on the blob to the right!</p>
 </div>
 
-<!-- ========== SHAMPOO LEGEND ========== -->
-<div class="legend-box">
-  <h3>&#x1F9F4; SHAMPOO &mdash; Literary &amp; Poetic Devices</h3>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--simile)"></div><strong>S</strong> &mdash; Simile</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--hyperbole)"></div><strong>H</strong> &mdash; Hyperbole</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--alliteration)"></div><strong>A</strong> &mdash; Alliteration</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--metaphor)"></div><strong>M</strong> &mdash; Metaphor</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--personification)"></div><strong>P</strong> &mdash; Personification</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--onomatopoeia)"></div><strong>O</strong> &mdash; Onomatopoeia</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--oxymoron)"></div><strong>O</strong> &mdash; Oxymoron</div>
-</div>
-
-<!-- ========== A FOREST LEGEND ========== -->
-<div class="legend-box">
-  <h3>&#x1F332; A FOREST &mdash; Persuasive Writing Techniques</h3>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--alliteration)"></div><strong>A</strong> &mdash; Alliteration</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--fact)"></div><strong>F</strong> &mdash; Facts</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--opinion)"></div><strong>O</strong> &mdash; Opinions</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--rhetorical)"></div><strong>R</strong> &mdash; Rhetorical Questions</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--emotive)"></div><strong>E</strong> &mdash; Emotive Language</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--statistic)"></div><strong>S</strong> &mdash; Statistics</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--ruleofthree)"></div><strong>T</strong> &mdash; Three (Rule of Three)</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--colon-semi)"></div>&#x2728; Colon &amp; Semicolon</div>
-</div>
-
-<!-- ========== ISPACE & DROP LEGEND ========== -->
-<div class="legend-box">
-  <h3>&#x1F680; ISPACE &mdash; Sentence Openers &amp; DROP</h3>
-  <div class="legend-item"><span class="ispace-badge ispace-I">I</span> -ing words</div>
-  <div class="legend-item"><span class="ispace-badge ispace-S">S</span> Simile opener</div>
-  <div class="legend-item"><span class="ispace-badge ispace-P">P</span> Preposition</div>
-  <div class="legend-item"><span class="ispace-badge ispace-A">A</span> Adverb / Adverbial</div>
-  <div class="legend-item"><span class="ispace-badge ispace-C">C</span> Conjunction</div>
-  <div class="legend-item"><span class="ispace-badge ispace-E">E</span> -ed words</div>
-  <div class="legend-item"><span class="drop-badge drop-D">D</span> Dialog (DROP)</div>
-  <div class="legend-item"><span class="drop-badge drop-R">R</span> Rhetorical Q (DROP)</div>
-  <div class="legend-item"><span class="drop-badge drop-O">O</span> Onomatopoeia (DROP)</div>
-  <div class="legend-item"><span class="drop-badge drop-P">P</span> Performance / Action (DROP)</div>
+<!-- ========== COMPACT LEGENDS ========== -->
+<div class="legend-grid">
+  <div class="legend-card">
+    <h3>&#x1F9F4; SHAMPOO (Fiction)</h3>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--simile)"></div><strong>S</strong> Simile</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--hyperbole)"></div><strong>H</strong> Hyperbole</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--alliteration)"></div><strong>A</strong> Alliteration</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--metaphor)"></div><strong>M</strong> Metaphor</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--personification)"></div><strong>P</strong> Personification</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--onomatopoeia)"></div><strong>O</strong> Onomatopoeia</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--oxymoron)"></div><strong>O</strong> Oxymoron</div>
+  </div>
+  <div class="legend-card">
+    <h3>&#x1F332; A FOREST (Persuasion)</h3>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--alliteration)"></div><strong>A</strong> Alliteration</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--fact)"></div><strong>F</strong> Facts</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--opinion)"></div><strong>O</strong> Opinions</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--rhetorical)"></div><strong>R</strong> Rhetorical Questions</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--emotive)"></div><strong>E</strong> Emotive Language</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--statistic)"></div><strong>S</strong> Statistics</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--ruleofthree)"></div><strong>T</strong> Three (Rule of Three)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--colon-semi)"></div>&#x2728; Colon &amp; Semicolon</div>
+  </div>
+  <div class="legend-card">
+    <h3>&#x1F680; ISPACE (Openers)</h3>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--ing)"></div><strong>I</strong> -ing words</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--simile)"></div><strong>S</strong> Simile opener</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--prep)"></div><strong>P</strong> Preposition</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--adverb)"></div><strong>A</strong> Adverb</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--conjunction)"></div><strong>C</strong> Conjunction</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--ed)"></div><strong>E</strong> -ed words</div>
+  </div>
+  <div class="legend-card">
+    <h3>&#x1F3AC; DROP (Techniques)</h3>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--dialog)"></div><strong>D</strong> Dialog</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--rhetorical)"></div><strong>R</strong> Rhetorical Questions</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--onomatopoeia)"></div><strong>O</strong> Onomatopoeia</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--action)"></div><strong>P</strong> Performance / Action</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!--              PIECE 1: FICTIONAL STORY                        -->
 <!-- ============================================================ -->
 <div class="section-divider">&#x2728; &#x2728; &#x2728;</div>
-
 <h2 class="fiction-title">&#x1F4D6; Piece 1: Fiction &mdash; &ldquo;The Secret of Willow Creek&rdquo;</h2>
 
 <div class="prompt-box">
   <strong>&#x1F4DD; Sample CSSE Prompt:</strong> Write a story about a time someone discovered something unexpected.<br>
-  <em>You have 30 minutes. Write between 250&ndash;350 words.</em>
+  <em>You have 30 minutes. Write between 250&ndash;350 words. Uses: SHAMPOO + ISPACE + DROP</em>
 </div>
+
+<div class="two-col">
+
+<!-- ===== LEFT: CLEAN ESSAY ===== -->
+<div class="essay-col">
+  <div class="essay-title">The Secret of Willow Creek</div>
+
+  <p><span class="tech-phrase" style="border-color:var(--ing)">Stumbling through the tangled undergrowth</span><span class="marker" style="background:var(--ing)">1</span>, Maya pushed aside the curtain of ivy that hid the entrance to Willow Creek.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--prep)">Beyond the ancient oak trees</span><span class="marker" style="background:var(--prep)">2</span>, a hidden garden stretched out before her &mdash; <span class="tech-phrase" style="border-color:var(--metaphor)">a forgotten paradise that time itself had overlooked</span><span class="marker" style="background:var(--metaphor)">3</span>. <span class="tech-phrase" style="border-color:var(--simile)">The flowers glowed like tiny lanterns in the fading light</span><span class="marker" style="background:var(--simile)">4</span>, their petals shimmering with colours she had never seen before.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--adverb)">Cautiously</span><span class="marker" style="background:var(--adverb)">5</span>, she stepped forward, her boots <span class="tech-phrase" style="border-color:var(--onomatopoeia)">crunching</span><span class="marker" style="background:var(--onomatopoeia)">6</span> on the frost-covered path. <span class="tech-phrase" style="border-color:var(--onomatopoeia)"><em>Crack!</em></span><span class="marker" style="background:var(--onomatopoeia)">6</span> A twig snapped beneath her foot, and the silence <span class="tech-phrase" style="border-color:var(--hyperbole)">shattered into a thousand pieces</span><span class="marker" style="background:var(--hyperbole)">7</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--dialog)">&ldquo;Who&rsquo;s there?&rdquo;</span><span class="marker" style="background:var(--dialog)">8</span> a voice whispered from the shadows. <span class="tech-phrase" style="border-color:var(--personification)">The wind held its breath. The trees leaned closer, their branches reaching down like curious fingers</span><span class="marker" style="background:var(--personification)">9</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--conjunction)">Although her heart was hammering against her ribs</span><span class="marker" style="background:var(--conjunction)">10</span>, Maya stood her ground. <span class="tech-phrase" style="border-color:var(--metaphor)">She was a statue of determination</span><span class="marker" style="background:var(--metaphor)">3</span>, rooted to the spot by a courage she did not know she possessed.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--ed)">Mesmerised</span><span class="marker" style="background:var(--ed)">11</span>, she watched as a figure emerged from behind the great willow &mdash; an old woman with <span class="tech-phrase" style="border-color:var(--simile)">silver hair that cascaded down her shoulders like a waterfall</span><span class="marker" style="background:var(--simile)">4</span>. <span class="tech-phrase" style="border-color:var(--hyperbole)">Her eyes were older than the mountains themselves</span><span class="marker" style="background:var(--hyperbole)">7</span>, holding a wisdom that seemed to stretch back to the beginning of time.</p>
+
+  <p>&ldquo;I have been waiting for you,&rdquo; the woman said, <span class="tech-phrase" style="border-color:var(--simile)">her voice as soft as velvet</span><span class="marker" style="background:var(--simile)">4</span>. &ldquo;The garden chose you.&rdquo;</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--rhetorical)">Could this really be happening? Was she dreaming?</span><span class="marker" style="background:var(--rhetorical)">12</span> <span class="tech-phrase" style="border-color:var(--oxymoron)">A deafening silence</span><span class="marker" style="background:var(--oxymoron)">13</span> fell over the garden.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--simile)">Like a key turning in a lock</span><span class="marker" style="background:var(--simile)">14</span>, something clicked inside Maya&rsquo;s mind. She felt <span class="tech-phrase" style="border-color:var(--alliteration)">a sudden, shimmering surge</span><span class="marker" style="background:var(--alliteration)">15</span> of something magical. <span class="tech-phrase" style="border-color:var(--onomatopoeia)">The leaves rustled and whispered; the brook babbled and burbled</span><span class="marker" style="background:var(--onomatopoeia)">6</span>; and the whole garden <span class="tech-phrase" style="border-color:var(--onomatopoeia)">hummed</span> with an ancient, beautiful energy.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--ruleofthree)">The colours were brighter; the air was sweeter; the world was more alive than she had ever known it to be</span><span class="marker" style="background:var(--ruleofthree)">16</span>. Maya reached out her hand, touched the bark of the great willow, and <span class="tech-phrase" style="border-color:var(--personification)">felt its heartbeat pulse beneath her fingers</span><span class="marker" style="background:var(--personification)">9</span>. She knew, with absolute certainty, that her life would never be the same again.</p>
+</div>
+
+<!-- ===== RIGHT: ANNOTATION BLOBS ===== -->
+<div class="notes-col">
+
+  <div class="blob-section">Paragraph 1 &mdash; Opening</div>
+
+  <div class="blob blob-ispace">
+    <span class="blob-num" style="background:var(--ing)">1</span>
+    <span class="blob-title">ISPACE: I &mdash; -ing Opener</span>
+    <span class="blob-system" style="background:var(--ing)">ISPACE</span>
+    <p><span class="quoted">&ldquo;Stumbling through&hellip;&rdquo;</span> &mdash; Starting with an <strong>-ing word</strong> immediately puts us in the action. The reader feels like they&rsquo;re moving with Maya.</p>
+  </div>
+
+  <div class="blob-section">Paragraph 2 &mdash; Setting</div>
+
+  <div class="blob blob-ispace">
+    <span class="blob-num" style="background:var(--prep)">2</span>
+    <span class="blob-title">ISPACE: P &mdash; Preposition</span>
+    <span class="blob-system" style="background:var(--prep)">ISPACE</span>
+    <p><span class="quoted">&ldquo;Beyond the ancient oak trees&hellip;&rdquo;</span> &mdash; A preposition opener tells us <strong>where</strong> things are, painting the scene before the main clause.</p>
+  </div>
+
+  <div class="blob blob-metaphor">
+    <span class="blob-num" style="background:var(--metaphor)">3</span>
+    <span class="blob-title">SHAMPOO: M &mdash; Metaphor</span>
+    <span class="blob-system" style="background:var(--metaphor)">SHAMPOO</span>
+    <p><span class="quoted">&ldquo;a forgotten paradise&rdquo;</span> &mdash; The garden <em>is not literally</em> a paradise. A metaphor says something <strong>IS</strong> something else (no &ldquo;like&rdquo; or &ldquo;as&rdquo;).</p>
+  </div>
+
+  <div class="blob blob-simile">
+    <span class="blob-num" style="background:var(--simile)">4</span>
+    <span class="blob-title">SHAMPOO: S &mdash; Simile</span>
+    <span class="blob-system" style="background:var(--simile)">SHAMPOO</span>
+    <p><span class="quoted">&ldquo;glowed like tiny lanterns&rdquo;</span> &mdash; Uses <strong>&ldquo;like&rdquo;</strong> to compare flowers to lanterns. Also used later: <em>&ldquo;like a waterfall&rdquo;</em>, <em>&ldquo;as soft as velvet.&rdquo;</em></p>
+  </div>
+
+  <div class="blob-section">Paragraph 3 &mdash; Tension Builds</div>
+
+  <div class="blob blob-ispace">
+    <span class="blob-num" style="background:var(--adverb)">5</span>
+    <span class="blob-title">ISPACE: A &mdash; Adverb</span>
+    <span class="blob-system" style="background:var(--adverb)">ISPACE</span>
+    <p><span class="quoted">&ldquo;Cautiously,&rdquo;</span> &mdash; An adverb opener tells us <strong>how</strong> something is done. Notice the comma after it!</p>
+  </div>
+
+  <div class="blob blob-onomatopoeia">
+    <span class="blob-num" style="background:var(--onomatopoeia)">6</span>
+    <span class="blob-title">SHAMPOO: O &mdash; Onomatopoeia</span>
+    <span class="blob-system" style="background:var(--onomatopoeia)">SHAMPOO</span>
+    <span class="blob-system" style="background:var(--onomatopoeia)">DROP: O</span>
+    <p><span class="quoted">&ldquo;Crunching&rdquo;, &ldquo;Crack!&rdquo;, &ldquo;rustled&rdquo;, &ldquo;babbled&rdquo;, &ldquo;hummed&rdquo;</span> &mdash; Words that <strong>sound like</strong> what they describe. Makes the reader <em>hear</em> the scene!</p>
+  </div>
+
+  <div class="blob blob-hyperbole">
+    <span class="blob-num" style="background:var(--hyperbole)">7</span>
+    <span class="blob-title">SHAMPOO: H &mdash; Hyperbole</span>
+    <span class="blob-system" style="background:var(--hyperbole)">SHAMPOO</span>
+    <p><span class="quoted">&ldquo;shattered into a thousand pieces&rdquo;</span> &mdash; Obvious <strong>exaggeration</strong> for dramatic effect. Also: <em>&ldquo;older than the mountains.&rdquo;</em></p>
+  </div>
+
+  <div class="blob-section">Paragraph 4 &mdash; Mystery</div>
+
+  <div class="blob blob-drop">
+    <span class="blob-num" style="background:var(--dialog)">8</span>
+    <span class="blob-title">DROP: D &mdash; Dialog</span>
+    <span class="blob-system" style="background:var(--dialog)">DROP</span>
+    <p><span class="quoted">&ldquo;Who&rsquo;s there?&rdquo;</span> &mdash; Dialog hooks the reader instantly. Notice the correct punctuation: speech marks, question mark <em>inside</em>, then the speaking verb.</p>
+  </div>
+
+  <div class="blob blob-personification">
+    <span class="blob-num" style="background:var(--personification)">9</span>
+    <span class="blob-title">SHAMPOO: P &mdash; Personification</span>
+    <span class="blob-system" style="background:var(--personification)">SHAMPOO</span>
+    <p><span class="quoted">&ldquo;The wind held its breath&rdquo;</span> &mdash; Wind can&rsquo;t breathe! Giving <strong>human actions</strong> to nature makes the setting feel alive and eerie. Also: <em>&ldquo;felt its heartbeat.&rdquo;</em></p>
+  </div>
+
+  <div class="blob-section">Paragraph 5 &mdash; Courage</div>
+
+  <div class="blob blob-ispace">
+    <span class="blob-num" style="background:var(--conjunction)">10</span>
+    <span class="blob-title">ISPACE: C &mdash; Conjunction</span>
+    <span class="blob-system" style="background:var(--conjunction)">ISPACE</span>
+    <p><span class="quoted">&ldquo;Although her heart was hammering&hellip;&rdquo;</span> &mdash; A conjunction opener builds a <strong>contrast</strong>: she was scared BUT she stood her ground. Creates tension.</p>
+  </div>
+
+  <div class="blob-section">Paragraph 6 &mdash; The Encounter</div>
+
+  <div class="blob blob-ispace">
+    <span class="blob-num" style="background:var(--ed)">11</span>
+    <span class="blob-title">ISPACE: E &mdash; -ed Opener</span>
+    <span class="blob-system" style="background:var(--ed)">ISPACE</span>
+    <p><span class="quoted">&ldquo;Mesmerised, she watched&hellip;&rdquo;</span> &mdash; An -ed word tells us Maya&rsquo;s <strong>emotional state</strong> before describing what she sees. Very effective!</p>
+  </div>
+
+  <div class="blob-section">Paragraph 7 &mdash; Shock</div>
+
+  <div class="blob blob-drop">
+    <span class="blob-num" style="background:var(--rhetorical)">12</span>
+    <span class="blob-title">DROP: R &mdash; Rhetorical Questions</span>
+    <span class="blob-system" style="background:var(--rhetorical)">DROP</span>
+    <p><span class="quoted">&ldquo;Could this really be happening?&rdquo;</span> &mdash; We don&rsquo;t expect an answer. Rhetorical questions show the character&rsquo;s <strong>inner thoughts</strong> and pull the reader in.</p>
+  </div>
+
+  <div class="blob blob-oxymoron">
+    <span class="blob-num" style="background:var(--oxymoron)">13</span>
+    <span class="blob-title">SHAMPOO: O &mdash; Oxymoron</span>
+    <span class="blob-system" style="background:var(--oxymoron)">SHAMPOO</span>
+    <p><span class="quoted">&ldquo;deafening silence&rdquo;</span> &mdash; Two <strong>opposite words</strong> together! &ldquo;Deafening&rdquo; means extremely loud, but &ldquo;silence&rdquo; means no sound. The clash creates a powerful image.</p>
+  </div>
+
+  <div class="blob-section">Paragraph 8 &mdash; Magic</div>
+
+  <div class="blob blob-simile">
+    <span class="blob-num" style="background:var(--simile)">14</span>
+    <span class="blob-title">ISPACE: S &mdash; Simile Opener</span>
+    <span class="blob-system" style="background:var(--simile)">ISPACE</span>
+    <p><span class="quoted">&ldquo;Like a key turning in a lock&hellip;&rdquo;</span> &mdash; Opening with a simile paints a picture <strong>before</strong> the main idea. The reader &ldquo;sees&rdquo; the comparison first.</p>
+  </div>
+
+  <div class="blob blob-alliteration">
+    <span class="blob-num" style="background:var(--alliteration)">15</span>
+    <span class="blob-title">SHAMPOO: A &mdash; Alliteration</span>
+    <span class="blob-system" style="background:var(--alliteration)">SHAMPOO</span>
+    <p><span class="quoted">&ldquo;<strong>s</strong>udden, <strong>s</strong>himmering <strong>s</strong>urge&rdquo;</span> &mdash; Three words starting with the same <strong>&lsquo;s&rsquo; sound</strong>. It sounds smooth and magical &mdash; the rhythm matches the meaning!</p>
+  </div>
+
+  <div class="blob-section">Paragraph 9 &mdash; Powerful Ending</div>
+
+  <div class="blob blob-ruleofthree">
+    <span class="blob-num" style="background:var(--ruleofthree)">16</span>
+    <span class="blob-title">Rule of Three + Semicolons</span>
+    <span class="blob-system" style="background:var(--ruleofthree)">SHAMPOO</span>
+    <span class="blob-system" style="background:var(--colon-semi)">;</span>
+    <p><span class="quoted">&ldquo;brighter<strong>;</strong> sweeter<strong>;</strong> more alive&rdquo;</span> &mdash; Three parallel clauses separated by <strong>semicolons</strong>. The rhythm of three feels <em>complete</em> and powerful. Examiners love this!</p>
+  </div>
+
+  <div class="blob blob-drop" style="border-color:var(--action)">
+    <span class="blob-num" style="background:var(--action)">&#x2605;</span>
+    <span class="blob-title">DROP: P &mdash; Action Ending</span>
+    <span class="blob-system" style="background:var(--action)">DROP</span>
+    <p>The story ends with Maya <strong>doing something</strong> &mdash; reaching out, touching the bark &mdash; not just thinking. Action endings are more powerful than &ldquo;and then I woke up&rdquo;!</p>
+  </div>
+
+</div>
+</div><!-- end two-col -->
 
 <div class="tip-box">
-  This story uses <strong>ALL</strong> of SHAMPOO, ISPACE and DROP. Watch for the coloured badges at the start of each paragraph &mdash; they tell you which sentence opener is being used!
-</div>
-
-<div class="emoji-illustration">&#x1F333;&#x1F32C;&#xFE0F;&#x1F3DE;&#xFE0F;&#x1F32C;&#xFE0F;&#x1F333;</div>
-
-<div class="story-text">
-
-<!-- Paragraph 1 -->
-<p>
-<span class="ispace-badge ispace-I">I &ndash; -ing</span>
-<span class="drop-badge drop-P">P &ndash; Action</span>
-Stumbling through the tangled undergrowth, Maya pushed aside the curtain of ivy that hid the entrance to Willow Creek.
-<span class="margin-note">&#x1F449; &ldquo;Stumbling&rdquo; is an -ing opener (ISPACE &ndash; I). The whole sentence is packed with action (DROP &ndash; P).</span>
-</p>
-
-<!-- Paragraph 2 -->
-<p>
-<span class="ispace-badge ispace-P">P &ndash; Preposition</span>
-Beyond the ancient oak trees, a hidden garden stretched out before her &mdash;
-<span data-technique="metaphor" data-label="&#x1F9F4; M &ndash; Metaphor" class="hl-metaphor">a forgotten paradise that time itself had overlooked</span>.
-<span data-technique="simile" data-label="&#x1F9F4; S &ndash; Simile" class="hl-simile">The flowers glowed like tiny lanterns in the fading light</span>,
-their petals shimmering with colours she had never seen before.
-<span class="margin-note">&#x1F449; &ldquo;Beyond&rdquo; is a preposition opener (ISPACE &ndash; P). &ldquo;Forgotten paradise&rdquo; is a metaphor &mdash; the garden is not literally a paradise. &ldquo;Like tiny lanterns&rdquo; is a simile, comparing flowers to lanterns.</span>
-</p>
-
-<!-- Paragraph 3 -->
-<p>
-<span class="ispace-badge ispace-A">A &ndash; Adverb</span>
-<span class="drop-badge drop-O">O &ndash; Onomatopoeia</span>
-Cautiously, she stepped forward, her boots
-<span data-technique="onomatopoeia" data-label="&#x1F9F4; O &ndash; Onomatopoeia" class="hl-onomatopoeia">crunching</span>
-on the frost-covered path.
-<span data-technique="onomatopoeia" data-label="&#x1F9F4; O &ndash; Onomatopoeia / DROP &ndash; O" class="hl-onomatopoeia"><em>Crack!</em></span>
-A twig snapped beneath her foot, and the silence
-<span data-technique="hyperbole" data-label="&#x1F9F4; H &ndash; Hyperbole" class="hl-hyperbole">shattered into a thousand pieces</span>.
-<span class="margin-note">&#x1F449; &ldquo;Cautiously&rdquo; is an adverb opener (ISPACE &ndash; A). &ldquo;Crunching&rdquo; and &ldquo;Crack!&rdquo; are onomatopoeia &mdash; words that sound like what they describe. &ldquo;Shattered into a thousand pieces&rdquo; is hyperbole &mdash; obvious exaggeration.</span>
-</p>
-
-<div class="emoji-illustration">&#x1F32B;&#xFE0F;&#x1F333;&#x1F441;&#xFE0F;&#x1F333;&#x1F32B;&#xFE0F;</div>
-
-<!-- Paragraph 4 -->
-<p>
-<span class="drop-badge drop-D">D &ndash; Dialog</span>
-&ldquo;Who&rsquo;s there?&rdquo; a voice whispered from the shadows.
-<span data-technique="personification" data-label="&#x1F9F4; P &ndash; Personification" class="hl-personification">The wind held its breath. The trees leaned closer, their branches reaching down like curious fingers</span>.
-<span class="margin-note">&#x1F449; Dialog opener (DROP &ndash; D) hooks the reader. The wind &ldquo;holding its breath&rdquo; and trees &ldquo;leaning closer&rdquo; are personification &mdash; giving human qualities to nature.</span>
-</p>
-
-<!-- Paragraph 5 -->
-<p>
-<span class="ispace-badge ispace-C">C &ndash; Conjunction</span>
-Although her heart was hammering against her ribs, Maya stood her ground.
-<span data-technique="metaphor" data-label="&#x1F9F4; M &ndash; Metaphor" class="hl-metaphor">She was a statue of determination</span>,
-rooted to the spot by a courage she did not know she possessed.
-<span class="margin-note">&#x1F449; &ldquo;Although&rdquo; is a conjunction opener (ISPACE &ndash; C). &ldquo;Statue of determination&rdquo; is a metaphor &mdash; she is not literally a statue, but the comparison shows how still and brave she was.</span>
-</p>
-
-<!-- Paragraph 6 -->
-<p>
-<span class="ispace-badge ispace-E">E &ndash; -ed word</span>
-<span class="drop-badge drop-D">D &ndash; Dialog</span>
-Mesmerised, she watched as a figure emerged from behind the great willow &mdash; an old woman with
-<span data-technique="simile" data-label="&#x1F9F4; S &ndash; Simile" class="hl-simile">silver hair that cascaded down her shoulders like a waterfall</span>.
-<span data-technique="hyperbole" data-label="&#x1F9F4; H &ndash; Hyperbole" class="hl-hyperbole">Her eyes were older than the mountains themselves</span>,
-holding a wisdom that seemed to stretch back to the beginning of time.
-</p>
-<p>
-&ldquo;I have been waiting for you,&rdquo; the woman said,
-<span data-technique="simile" data-label="&#x1F9F4; S &ndash; Simile" class="hl-simile">her voice as soft as velvet</span>.
-&ldquo;The garden chose you.&rdquo;
-<span class="margin-note">&#x1F449; &ldquo;Mesmerised&rdquo; is an -ed opener (ISPACE &ndash; E). &ldquo;Like a waterfall&rdquo; and &ldquo;as soft as velvet&rdquo; are similes. &ldquo;Older than the mountains&rdquo; is hyperbole. The dialog drives the plot forward.</span>
-</p>
-
-<div class="emoji-illustration">&#x1F31F;&#x1F9D9;&#x200D;&#x2640;&#xFE0F;&#x1F333;&#x1F9D9;&#x200D;&#x2640;&#xFE0F;&#x1F31F;</div>
-
-<!-- Paragraph 7 -->
-<p>
-<span class="drop-badge drop-R">R &ndash; Rhetorical Q</span>
-Could this really be happening? Was she dreaming?
-<span data-technique="oxymoron" data-label="&#x1F9F4; O &ndash; Oxymoron" class="hl-oxymoron">A deafening silence</span>
-fell over the garden.
-<span class="margin-note">&#x1F449; Rhetorical questions (DROP &ndash; R) &mdash; we do not expect an answer; they show Maya&rsquo;s shock. &ldquo;Deafening silence&rdquo; is an oxymoron &mdash; two contradictory words placed together for dramatic effect.</span>
-</p>
-
-<!-- Paragraph 8 -->
-<p>
-<span class="ispace-badge ispace-S">S &ndash; Simile opener</span>
-<span data-technique="simile" data-label="&#x1F9F4; S &ndash; Simile" class="hl-simile">Like a key turning in a lock</span>,
-something clicked inside Maya&rsquo;s mind. She felt
-<span data-technique="alliteration" data-label="&#x1F9F4; A &ndash; Alliteration" class="hl-alliteration">a sudden, shimmering surge</span>
-of something magical.
-<span data-technique="onomatopoeia" data-label="&#x1F9F4; O &ndash; Onomatopoeia" class="hl-onomatopoeia">The leaves rustled and whispered; the brook babbled and burbled</span>;
-and the whole garden
-<span data-technique="onomatopoeia" data-label="&#x1F9F4; O &ndash; Onomatopoeia" class="hl-onomatopoeia">hummed</span>
-with an ancient, beautiful energy.
-<span class="margin-note">&#x1F449; &ldquo;Like a key turning in a lock&rdquo; is a simile opener (ISPACE &ndash; S). &ldquo;Sudden, shimmering surge&rdquo; is alliteration &mdash; repeating the &lsquo;s&rsquo; sound. &ldquo;Rustled&rdquo;, &ldquo;babbled&rdquo;, &ldquo;burbled&rdquo; and &ldquo;hummed&rdquo; are onomatopoeia.</span>
-</p>
-
-<!-- Paragraph 9 &ndash; Ending -->
-<p>
-<span class="drop-badge drop-P">P &ndash; Action</span>
-<span data-technique="ruleofthree" data-label="Rule of Three" class="hl-ruleofthree">The colours were brighter; the air was sweeter; the world was more alive than she had ever known it to be</span>.
-Maya reached out her hand, touched the bark of the great willow, and
-<span data-technique="personification" data-label="&#x1F9F4; P &ndash; Personification" class="hl-personification">felt its heartbeat pulse beneath her fingers</span>.
-She knew, with absolute certainty, that her life would never be the same again.
-<span class="margin-note">&#x1F449; The <strong>rule of three</strong> with <strong>semicolons</strong> &mdash; three parallel clauses separated by semicolons for rhythm and impact. The tree having a &ldquo;heartbeat&rdquo; is personification. The final sentence is a strong, confident ending &mdash; always finish with power!</span>
-</p>
-
-</div>
-
-<div class="tip-box">
-  <strong>Examiner Top Tips for Fiction:</strong><br>
-  &#x2705; Use <strong>all 5 senses</strong> (sight, sound, touch, smell, taste)<br>
-  &#x2705; <strong>Show, don&rsquo;t tell</strong> &mdash; say &ldquo;her heart hammered&rdquo; not &ldquo;she was scared&rdquo;<br>
-  &#x2705; Vary your sentence openers (use ISPACE!)<br>
-  &#x2705; Include at least one line of <strong>dialog</strong><br>
+  <strong>Examiner Top Tips for Fiction:</strong>
+  &#x2705; Use <strong>all 5 senses</strong> |
+  &#x2705; <strong>Show, don&rsquo;t tell</strong> |
+  &#x2705; Vary openers (ISPACE) |
+  &#x2705; Include dialog |
   &#x2705; End with a <strong>memorable final line</strong>
 </div>
 
@@ -452,98 +555,133 @@ She knew, with absolute certainty, that her life would never be the same again.
 <!--          PIECE 2: NON-FICTION (PERSUASIVE LETTER)            -->
 <!-- ============================================================ -->
 <div class="section-divider">&#x2728; &#x2728; &#x2728;</div>
-
 <h2 class="nonfiction-title">&#x1F4E3; Piece 2: Non-Fiction &mdash; &ldquo;Why Every School Should Have a Garden&rdquo;</h2>
 
 <div class="prompt-box">
   <strong>&#x1F4DD; Sample CSSE Prompt:</strong> Write a letter to your headteacher persuading them to make a change at your school.<br>
-  <em>You have 30 minutes. Write between 250&ndash;350 words.</em>
+  <em>You have 30 minutes. Write between 250&ndash;350 words. Uses: A FOREST + Colon &amp; Semicolon</em>
 </div>
+
+<div class="two-col">
+
+<!-- ===== LEFT: CLEAN ESSAY ===== -->
+<div class="essay-col">
+  <div class="essay-title">Why Every School Should Have a Garden</div>
+
+  <p style="text-indent:0;padding-left:20px"><em>Dear Mrs Thompson,</em></p>
+
+  <p><span class="tech-phrase" style="border-color:var(--rhetorical)">Have you ever wondered what it would be like if every child could grow their own food, breathe fresh air during school hours, and learn lessons that no textbook could ever teach?</span><span class="marker" style="background:var(--rhetorical)">1</span></p>
+
+  <p><span class="tech-phrase" style="border-color:var(--opinion)">I passionately believe that every school in Britain deserves a school garden</span><span class="marker" style="background:var(--opinion)">2</span>. It is, without doubt, <span class="tech-phrase" style="border-color:var(--emotive)">one of the most important changes we could make to transform the lives of young people</span><span class="marker" style="background:var(--emotive)">3</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--alliteration)">A green, growing garden</span><span class="marker" style="background:var(--alliteration)">4</span> would give students a space to learn, relax, and reconnect with nature. <span class="tech-phrase" style="border-color:var(--fact)">According to the Royal Horticultural Society, school gardens improve children&rsquo;s understanding of science by allowing them to observe plant life cycles, soil ecosystems, and weather patterns first-hand</span><span class="marker" style="background:var(--fact)">5</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--statistic)">Astonishingly, 73% of children in a recent NHS survey said they felt calmer and happier after spending time outdoors during the school day</span><span class="marker" style="background:var(--statistic)">6</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--ruleofthree)">A school garden teaches patience<span style="color:var(--colon-semi);font-weight:bold">;</span> it builds responsibility<span style="color:var(--colon-semi);font-weight:bold">;</span> it nurtures a love of learning that lasts a lifetime</span><span class="marker" style="background:var(--ruleofthree)">7</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--emotive)">Imagine a child who struggles in the classroom &mdash; a child who feels lost among equations and essays &mdash; suddenly discovering that they have a gift for growing things. That moment of pride, that spark of confidence</span><span class="marker" style="background:var(--emotive)">3</span><span class="tech-phrase" style="border-color:var(--colon-semi)"><span style="color:var(--colon-semi);font-weight:bold">:</span> it could change everything</span><span class="marker" style="background:var(--colon-semi)">8</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--rhetorical)">Can we really afford to deny our children this opportunity?</span><span class="marker" style="background:var(--rhetorical)">1</span></p>
+
+  <p><span class="tech-phrase" style="border-color:var(--colon-semi)">The benefits are clear<span style="color:var(--colon-semi);font-weight:bold">:</span></span><span class="marker" style="background:var(--colon-semi)">8</span> <span class="tech-phrase" style="border-color:var(--ruleofthree)">better mental health, stronger science skills, and a deeper connection to the world around us</span><span class="marker" style="background:var(--ruleofthree)">7</span>.</p>
+
+  <p><span class="tech-phrase" style="border-color:var(--alliteration)">Surely, it is our solemn, sacred duty</span><span class="marker" style="background:var(--alliteration)">4</span> to provide the best possible education for every single child. <span class="tech-phrase" style="border-color:var(--opinion)">I firmly believe that a school garden is not a luxury &mdash; it is a necessity</span><span class="marker" style="background:var(--opinion)">2</span>. Let us plant the seeds of a brighter future, starting today.</p>
+
+  <p style="text-indent:0;padding-left:20px"><em>Yours sincerely,<br>[Your Name]</em></p>
+</div>
+
+<!-- ===== RIGHT: ANNOTATION BLOBS ===== -->
+<div class="notes-col">
+
+  <div class="blob-section">Opening &mdash; Hook the Reader</div>
+
+  <div class="blob blob-rhetorical">
+    <span class="blob-num" style="background:var(--rhetorical)">1</span>
+    <span class="blob-title">A FOREST: R &mdash; Rhetorical Question</span>
+    <span class="blob-system" style="background:var(--rhetorical)">A FOREST</span>
+    <p><span class="quoted">&ldquo;Have you ever wondered&hellip;?&rdquo;</span> &mdash; A question you <strong>don&rsquo;t expect an answer to</strong>. It makes the reader stop and think. Great way to start a persuasive piece! Used again later: <em>&ldquo;Can we really afford&hellip;?&rdquo;</em></p>
+  </div>
+
+  <div class="blob-section">Paragraph 2 &mdash; State Your View</div>
+
+  <div class="blob blob-opinion">
+    <span class="blob-num" style="background:var(--opinion)">2</span>
+    <span class="blob-title">A FOREST: O &mdash; Opinion</span>
+    <span class="blob-system" style="background:var(--opinion)">A FOREST</span>
+    <p><span class="quoted">&ldquo;I passionately believe&hellip;&rdquo;</span> &mdash; Your <strong>personal view</strong>. Use phrases like &ldquo;I believe&rdquo;, &ldquo;I am convinced&rdquo;, &ldquo;In my view.&rdquo; State it confidently! Also used at the end: <em>&ldquo;I firmly believe.&rdquo;</em></p>
+  </div>
+
+  <div class="blob blob-emotive">
+    <span class="blob-num" style="background:var(--emotive)">3</span>
+    <span class="blob-title">A FOREST: E &mdash; Emotive Language</span>
+    <span class="blob-system" style="background:var(--emotive)">A FOREST</span>
+    <p><span class="quoted">&ldquo;transform the lives of young people&rdquo;</span> &mdash; Words chosen to <strong>stir feelings</strong>. Also: <em>&ldquo;struggles&rdquo;, &ldquo;lost&rdquo;, &ldquo;pride&rdquo;, &ldquo;spark of confidence.&rdquo;</em> These make the reader <em>care</em> about your argument.</p>
+  </div>
+
+  <div class="blob-section">Paragraph 3 &mdash; Evidence</div>
+
+  <div class="blob blob-alliteration">
+    <span class="blob-num" style="background:var(--alliteration)">4</span>
+    <span class="blob-title">A FOREST: A &mdash; Alliteration</span>
+    <span class="blob-system" style="background:var(--alliteration)">A FOREST</span>
+    <p><span class="quoted">&ldquo;<strong>g</strong>reen, <strong>g</strong>rowing <strong>g</strong>arden&rdquo;</span> &mdash; Repeating the same <strong>starting sound</strong>. It&rsquo;s catchy and memorable. Also: <em>&ldquo;<strong>s</strong>olemn, <strong>s</strong>acred.&rdquo;</em></p>
+  </div>
+
+  <div class="blob blob-fact">
+    <span class="blob-num" style="background:var(--fact)">5</span>
+    <span class="blob-title">A FOREST: F &mdash; Fact</span>
+    <span class="blob-system" style="background:var(--fact)">A FOREST</span>
+    <p><span class="quoted">&ldquo;According to the Royal Horticultural Society&hellip;&rdquo;</span> &mdash; A <strong>true, verifiable statement</strong> from a real organisation. Facts make your argument <em>trustworthy</em>. Name the source!</p>
+  </div>
+
+  <div class="blob-section">Paragraph 4 &mdash; Numbers</div>
+
+  <div class="blob blob-statistic">
+    <span class="blob-num" style="background:var(--statistic)">6</span>
+    <span class="blob-title">A FOREST: S &mdash; Statistic</span>
+    <span class="blob-system" style="background:var(--statistic)">A FOREST</span>
+    <p><span class="quoted">&ldquo;73% of children&hellip;&rdquo;</span> &mdash; A <strong>number or percentage</strong> that backs up your point. Statistics sound researched and scientific. Even in the exam, you can make up a plausible-sounding one!</p>
+  </div>
+
+  <div class="blob-section">Paragraph 5 &mdash; Power of Three</div>
+
+  <div class="blob blob-ruleofthree">
+    <span class="blob-num" style="background:var(--ruleofthree)">7</span>
+    <span class="blob-title">A FOREST: T &mdash; Rule of Three</span>
+    <span class="blob-system" style="background:var(--ruleofthree)">A FOREST</span>
+    <p><span class="quoted">&ldquo;patience<strong>;</strong> responsibility<strong>;</strong> a love of learning&rdquo;</span> &mdash; <strong>Three things listed together</strong> for rhythm and completeness. Three feels &ldquo;just right.&rdquo; Used twice &mdash; once with semicolons, once with commas.</p>
+  </div>
+
+  <div class="blob-section">Paragraph 6 &mdash; Emotional Appeal</div>
+
+  <div class="blob blob-colon-semi">
+    <span class="blob-num" style="background:var(--colon-semi)">8</span>
+    <span class="blob-title">Colon &amp; Semicolon</span>
+    <span class="blob-system" style="background:var(--colon-semi)">Punctuation</span>
+    <p><strong>Semicolon (;)</strong> &mdash; joins two closely related sentences: <span class="quoted">&ldquo;teaches patience<strong>;</strong> builds responsibility.&rdquo;</span></p>
+    <p><strong>Colon (:)</strong> &mdash; introduces a dramatic reveal or list: <span class="quoted">&ldquo;spark of confidence<strong>:</strong> it could change everything.&rdquo;</span> Also: <em>&ldquo;The benefits are clear<strong>:</strong>&rdquo;</em></p>
+    <p>Using these correctly shows the examiner you are writing at a <strong>high level</strong>!</p>
+  </div>
+
+  <div class="blob-section">Closing &mdash; Call to Action</div>
+
+  <div class="blob blob-multi">
+    <span class="blob-num" style="background:#FBC02D">&#x2605;</span>
+    <span class="blob-title">Strong Ending</span>
+    <span class="blob-system" style="background:#FBC02D">TIP</span>
+    <p><span class="quoted">&ldquo;Let us plant the seeds of a brighter future&rdquo;</span> &mdash; A <strong>call to action</strong> tells the reader what to do. The clever <strong>metaphor</strong> links &ldquo;planting seeds&rdquo; (the garden) to &ldquo;a brighter future&rdquo; (hope). Always end with power!</p>
+  </div>
+
+</div>
+</div><!-- end two-col -->
 
 <div class="tip-box">
-  This persuasive letter uses <strong>ALL</strong> of A FOREST. Look for the coloured highlights &mdash; each one shows a persuasive technique in action! Hover to see the label.
-</div>
-
-<div class="emoji-illustration">&#x1F331;&#x1F3EB;&#x1F33B;&#x1F3EB;&#x1F331;</div>
-
-<div class="story-text">
-
-<p style="text-indent:0"><em>Dear Mrs Thompson,</em></p>
-
-<!-- Opening paragraph -->
-<p style="text-indent:0">
-<span data-technique="rhetorical" data-label="&#x1F332; R &ndash; Rhetorical Question" class="hl-rhetorical">Have you ever wondered what it would be like if every child could grow their own food, breathe fresh air during school hours, and learn lessons that no textbook could ever teach?</span>
-<span class="margin-note">&#x1F449; Opens with a <strong>rhetorical question</strong> (A FOREST &ndash; R) &mdash; a question you do not expect an answer to. It makes the reader think and immediately engages them.</span>
-</p>
-
-<!-- Opinion paragraph -->
-<p>
-<span data-technique="opinion" data-label="&#x1F332; O &ndash; Opinion" class="hl-opinion">I passionately believe that every school in Britain deserves a school garden</span>.
-It is, without doubt,
-<span data-technique="emotive" data-label="&#x1F332; E &ndash; Emotive Language" class="hl-emotive">one of the most important changes we could make to transform the lives of young people</span>.
-<span class="margin-note">&#x1F449; &ldquo;I passionately believe&rdquo; is a clear <strong>opinion</strong> (A FOREST &ndash; O). &ldquo;Transform the lives of young people&rdquo; is <strong>emotive language</strong> (A FOREST &ndash; E) &mdash; it stirs feelings and makes the reader care.</span>
-</p>
-
-<!-- Alliteration + Fact paragraph -->
-<p>
-<span data-technique="alliteration" data-label="&#x1F332; A &ndash; Alliteration" class="hl-alliteration">A green, growing garden</span>
-would give students a space to learn, relax, and reconnect with nature.
-<span data-technique="fact" data-label="&#x1F332; F &ndash; Fact" class="hl-fact">According to the Royal Horticultural Society, school gardens improve children&rsquo;s understanding of science by allowing them to observe plant life cycles, soil ecosystems, and weather patterns first-hand</span>.
-<span class="margin-note">&#x1F449; &ldquo;Green, growing garden&rdquo; repeats the &lsquo;g&rsquo; sound &mdash; that is <strong>alliteration</strong> (A FOREST &ndash; A). The RHS reference is a <strong>fact</strong> (A FOREST &ndash; F) from a real organisation &mdash; facts make your argument trustworthy.</span>
-</p>
-
-<div class="emoji-illustration">&#x1F4CA;&#x1F33F;&#x2764;&#xFE0F;&#x1F33F;&#x1F4CA;</div>
-
-<!-- Statistics paragraph -->
-<p>
-<span data-technique="statistic" data-label="&#x1F332; S &ndash; Statistic" class="hl-statistic">Astonishingly, 73% of children in a recent NHS survey said they felt calmer and happier after spending time outdoors during the school day</span>.
-<span class="margin-note">&#x1F449; A <strong>statistic</strong> (A FOREST &ndash; S) &mdash; a number or percentage that supports your argument. Statistics make your writing sound researched and convincing.</span>
-</p>
-
-<!-- Rule of Three + Semicolons -->
-<p>
-<span data-technique="ruleofthree" data-label="&#x1F332; T &ndash; Rule of Three" class="hl-ruleofthree"><span data-technique="colon-semi" data-label="Semicolons" class="hl-colon-semi">A school garden teaches patience; it builds responsibility; it nurtures a love of learning that lasts a lifetime</span></span>.
-<span class="margin-note">&#x1F449; The <strong>rule of three</strong> (A FOREST &ndash; T): three powerful points in a row, separated by <strong>semicolons</strong>. Semicolons (;) connect closely related ideas that could each be their own sentence. The rhythm of three makes your argument feel complete and powerful.</span>
-</p>
-
-<!-- Emotive language paragraph -->
-<p>
-<span data-technique="emotive" data-label="&#x1F332; E &ndash; Emotive Language" class="hl-emotive">Imagine a child who struggles in the classroom &mdash; a child who feels lost among equations and essays &mdash; suddenly discovering that they have a gift for growing things. That moment of pride, that spark of confidence</span><span data-technique="colon-semi" data-label="Colon" class="hl-colon-semi">: it could change everything</span>.
-<span class="margin-note">&#x1F449; <strong>Emotive language</strong> (A FOREST &ndash; E) &mdash; words like &ldquo;struggles&rdquo;, &ldquo;lost&rdquo;, &ldquo;pride&rdquo;, and &ldquo;spark of confidence&rdquo; make the reader <em>feel</em> something. The <strong>colon</strong> (:) introduces the dramatic conclusion &mdash; &ldquo;it could change everything.&rdquo;</span>
-</p>
-
-<!-- Second Rhetorical Question -->
-<p>
-<span data-technique="rhetorical" data-label="&#x1F332; R &ndash; Rhetorical Question" class="hl-rhetorical">Can we really afford to deny our children this opportunity?</span>
-<span class="margin-note">&#x1F449; Another <strong>rhetorical question</strong> &mdash; the obvious answer is &ldquo;No!&rdquo; which makes the reader agree with you.</span>
-</p>
-
-<!-- Colon usage paragraph -->
-<p>
-<span data-technique="colon-semi" data-label="Colon introduces a list" class="hl-colon-semi">The benefits are clear: <span data-technique="ruleofthree" data-label="&#x1F332; T &ndash; Rule of Three" class="hl-ruleofthree">better mental health, stronger science skills, and a deeper connection to the world around us</span></span>.
-<span class="margin-note">&#x1F449; A <strong>colon</strong> (:) introduces a list or explanation. Here it sets up another <strong>rule of three</strong> &mdash; three benefits listed together.</span>
-</p>
-
-<!-- Closing paragraph -->
-<p>
-<span data-technique="alliteration" data-label="&#x1F332; A &ndash; Alliteration" class="hl-alliteration">Surely, it is our solemn, sacred duty</span>
-to provide the best possible education for every single child.
-<span data-technique="opinion" data-label="&#x1F332; O &ndash; Opinion" class="hl-opinion">I firmly believe that a school garden is not a luxury &mdash; it is a necessity</span>.
-Let us plant the seeds of a brighter future, starting today.
-<span class="margin-note">&#x1F449; &ldquo;Solemn, sacred&rdquo; is <strong>alliteration</strong> again. &ldquo;I firmly believe&rdquo; is a strong <strong>opinion</strong>. The ending uses a clever <strong>metaphor</strong> &mdash; &ldquo;plant the seeds of a brighter future&rdquo; &mdash; linking the garden theme to the idea of hope. Always end with a powerful final line!</span>
-</p>
-
-<p style="text-indent:0"><em>Yours sincerely,<br>[Your Name]</em></p>
-
-</div>
-
-<div class="tip-box">
-  <strong>Examiner Top Tips for Non-Fiction / Persuasion:</strong><br>
-  &#x2705; Use the correct <strong>format</strong> (Dear&hellip; / Yours sincerely)<br>
-  &#x2705; Hit <strong>ALL</strong> of A FOREST &mdash; examiners look for variety<br>
-  &#x2705; Use <strong>colons</strong> (:) to introduce lists or explanations<br>
-  &#x2705; Use <strong>semicolons</strong> (;) to join related ideas in a sophisticated way<br>
-  &#x2705; End with a <strong>call to action</strong> &mdash; tell the reader what to do next
+  <strong>Examiner Top Tips for Non-Fiction:</strong>
+  &#x2705; Correct <strong>format</strong> (Dear&hellip; / Yours sincerely) |
+  &#x2705; Hit <strong>ALL</strong> of A FOREST |
+  &#x2705; Use <strong>colons</strong> and <strong>semicolons</strong> |
+  &#x2705; End with a <strong>call to action</strong>
 </div>
 
 <!-- ============================================================ -->
@@ -553,7 +691,6 @@ Let us plant the seeds of a brighter future, starting today.
 
 <h2 style="text-align:center; color:#4527A0; font-family:'Patrick Hand',cursive; font-size:2.2rem;">&#x1F4CB; Quick-Reference Cheat Sheets</h2>
 
-<!-- SHAMPOO Cheat Sheet -->
 <div class="cheat-sheet">
   <h3>&#x1F9F4; SHAMPOO &mdash; Remember it like washing your hair!</h3>
   <table>
@@ -568,7 +705,6 @@ Let us plant the seeds of a brighter future, starting today.
   </table>
 </div>
 
-<!-- A FOREST Cheat Sheet -->
 <div class="cheat-sheet">
   <h3>&#x1F332; A FOREST &mdash; Remember it like a walk in the woods!</h3>
   <table>
@@ -583,37 +719,34 @@ Let us plant the seeds of a brighter future, starting today.
   </table>
 </div>
 
-<!-- ISPACE Cheat Sheet -->
 <div class="cheat-sheet">
   <h3>&#x1F680; ISPACE &mdash; Never start every sentence with &ldquo;I&rdquo; or &ldquo;The&rdquo;!</h3>
   <table>
     <tr><th>Letter</th><th>Opener Type</th><th>Example</th></tr>
-    <tr><td><span class="ispace-badge ispace-I">I</span></td><td>-ing word</td><td>Stumbling through the undergrowth, Maya&hellip;</td></tr>
-    <tr><td><span class="ispace-badge ispace-S">S</span></td><td>Simile</td><td>Like a key turning in a lock, something clicked&hellip;</td></tr>
-    <tr><td><span class="ispace-badge ispace-P">P</span></td><td>Preposition</td><td>Beyond the ancient oak trees, a hidden garden&hellip;</td></tr>
-    <tr><td><span class="ispace-badge ispace-A">A</span></td><td>Adverb</td><td>Cautiously, she stepped forward&hellip;</td></tr>
-    <tr><td><span class="ispace-badge ispace-C">C</span></td><td>Conjunction</td><td>Although her heart was hammering&hellip;</td></tr>
-    <tr><td><span class="ispace-badge ispace-E">E</span></td><td>-ed word</td><td>Mesmerised, she watched as a figure emerged&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--ing)">I</td><td>-ing word</td><td>Stumbling through the undergrowth, Maya&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--simile)">S</td><td>Simile</td><td>Like a key turning in a lock, something clicked&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--prep)">P</td><td>Preposition</td><td>Beyond the ancient oak trees, a hidden garden&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--adverb)">A</td><td>Adverb</td><td>Cautiously, she stepped forward&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--conjunction)">C</td><td>Conjunction</td><td>Although her heart was hammering&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--ed)">E</td><td>-ed word</td><td>Mesmerised, she watched as a figure emerged&hellip;</td></tr>
   </table>
 </div>
 
-<!-- DROP Cheat Sheet -->
 <div class="cheat-sheet">
   <h3>&#x1F3AC; DROP &mdash; Make your writing come alive!</h3>
   <table>
     <tr><th>Letter</th><th>Technique</th><th>Example</th></tr>
-    <tr><td><span class="drop-badge drop-D">D</span></td><td>Dialog</td><td>&ldquo;Who&rsquo;s there?&rdquo; a voice whispered.</td></tr>
-    <tr><td><span class="drop-badge drop-R">R</span></td><td>Rhetorical Questions</td><td>Could this really be happening?</td></tr>
-    <tr><td><span class="drop-badge drop-O">O</span></td><td>Onomatopoeia</td><td><em>Crack!</em> A twig snapped.</td></tr>
-    <tr><td><span class="drop-badge drop-P">P</span></td><td>Performance / Action</td><td>Maya reached out her hand and touched the bark&hellip;</td></tr>
+    <tr><td style="font-weight:700;color:var(--dialog)">D</td><td>Dialog</td><td>&ldquo;Who&rsquo;s there?&rdquo; a voice whispered.</td></tr>
+    <tr><td style="font-weight:700;color:var(--rhetorical)">R</td><td>Rhetorical Questions</td><td>Could this really be happening?</td></tr>
+    <tr><td style="font-weight:700;color:var(--onomatopoeia)">O</td><td>Onomatopoeia</td><td><em>Crack!</em> A twig snapped.</td></tr>
+    <tr><td style="font-weight:700;color:var(--action)">P</td><td>Performance / Action</td><td>Maya reached out her hand and touched the bark&hellip;</td></tr>
   </table>
 </div>
 
-<!-- Colon & Semicolon Guide -->
-<div class="cheat-sheet">
-  <h3>&#x2728; Colon (:) and Semicolon (;) &mdash; The Secret Weapons!</h3>
+<div class="cheat-sheet" style="border-color:var(--colon-semi);">
+  <h3 style="color:var(--colon-semi);">&#x2728; Colon (:) and Semicolon (;) &mdash; The Secret Weapons!</h3>
   <table>
-    <tr><th>Punctuation</th><th>When to Use</th><th>Example</th></tr>
+    <tr><th style="background:#FCE4EC;color:var(--colon-semi)">Mark</th><th style="background:#FCE4EC;color:var(--colon-semi)">When to Use</th><th style="background:#FCE4EC;color:var(--colon-semi)">Example</th></tr>
     <tr>
       <td style="font-size:1.5rem;font-weight:700;color:var(--colon-semi)">:</td>
       <td>Before a <strong>list</strong>, <strong>explanation</strong>, or <strong>dramatic moment</strong></td>
@@ -625,21 +758,18 @@ Let us plant the seeds of a brighter future, starting today.
       <td>&ldquo;It teaches patience<strong>;</strong> it builds responsibility<strong>;</strong> it nurtures love of learning.&rdquo;</td>
     </tr>
   </table>
-  <div class="margin-note" style="margin-top:12px;">
-    &#x1F4A1; <strong>Top tip:</strong> Using a colon or semicolon correctly shows the examiner you are writing at a high level. Even one or two uses can boost your mark!
-  </div>
 </div>
 
 <!-- Final Exam Tips -->
 <div style="background:linear-gradient(135deg,#E8EAF6,#FCE4EC); border-radius:16px; padding:25px; margin:30px 0; border:2px solid #CE93D8;">
   <h3 style="color:#6A1B9A; font-family:'Patrick Hand',cursive; font-size:1.8rem; text-align:center;">&#x1F3AF; Exam Day Reminders</h3>
-  <div style="font-family:'Poppins',sans-serif; font-size:0.95rem; line-height:1.8;">
-    <p><strong>&#x23F0; Time Management:</strong> Spend 5 mins planning, 20 mins writing, 5 mins checking.</p>
-    <p><strong>&#x1F4DD; Plan First:</strong> Jot down which SHAMPOO / A FOREST / ISPACE techniques you will use.</p>
-    <p><strong>&#x2705; Paragraphs:</strong> Use at least 4&ndash;5 paragraphs. Each one should have a clear purpose.</p>
-    <p><strong>&#x1F3C6; Opening Line:</strong> Make your first sentence grab the reader &mdash; use DROP or ISPACE!</p>
-    <p><strong>&#x1F3C1; Closing Line:</strong> End with a powerful, memorable final sentence.</p>
-    <p><strong>&#x1F50D; Check Your SPaG:</strong> Spelling, Punctuation, and Grammar &mdash; read through once at the end!</p>
+  <div style="font-size:0.95rem; line-height:1.8;">
+    <p><strong>&#x23F0; Time:</strong> 5 mins planning, 20 mins writing, 5 mins checking.</p>
+    <p><strong>&#x1F4DD; Plan:</strong> Jot down which techniques you will use (tick them off!).</p>
+    <p><strong>&#x2705; Paragraphs:</strong> At least 4&ndash;5. Each one has a clear purpose.</p>
+    <p><strong>&#x1F3C6; Opening:</strong> Hook the reader in the first sentence (use DROP or ISPACE!).</p>
+    <p><strong>&#x1F3C1; Closing:</strong> End with a powerful, memorable final sentence.</p>
+    <p><strong>&#x1F50D; SPaG:</strong> Read through once at the end for Spelling, Punctuation, Grammar.</p>
     <p><strong>&#x2728; Vocabulary:</strong> Use ambitious words &mdash; &ldquo;cautiously&rdquo; not &ldquo;carefully&rdquo;, &ldquo;cascaded&rdquo; not &ldquo;fell&rdquo;.</p>
   </div>
 </div>
